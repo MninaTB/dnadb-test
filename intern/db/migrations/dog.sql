@@ -1,9 +1,9 @@
 CREATE TABLE IF NOT EXISTS dog (
-    id STRING,
-    name STRING,
+    id VARCHAR(255),
+    name VARCHAR(255),
     birthdate DATE,
-    race STRING,
-    color STRING,
-    mother STRING,
-    father STRING
+    race VARCHAR(255),
+    color VARCHAR(255),
+    mother VARCHAR(255),
+    father VARCHAR(255)
 );

@@ -1,0 +1,13 @@
+version: '3.3'
+services:
+  db:
+    image: mariadb
+    environment:
+      - MYSQL_USER=dnadb
+      - MYSQL_PASSWORD=1234
+      - MYSQL_ROOT_PASSWORD=1234
+      - MYSQL_DATABASE=dnadb
+    ports:
+      - "0.0.0.0:3306:3306"
+    volumes:
+     - ./docker-data/database:/var/lib/mysql
