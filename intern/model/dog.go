@@ -1,33 +1,33 @@
 package model
 
 import (
-  "time"
+	"time"
 )
 
 type DogRace int
 
 const (
-  unknown DogRace = iota
-  gorilla
-  schnuffi
+	DogRaceUnknown DogRace = iota
+	DogRaceGorilla
+	DogRaceSchnuffi
 )
 
 type DogColor int
 
 const (
-  unknown DogColor = iota
-  red
-  brown
+	DogColorUnknown DogColor = iota
+	DogColorRed
+	DogColorBrown
 )
 
 type UUID string
 
 type Dog struct {
-  ID        UUID
-  Name      string
-  Brithdate *time.Time
-  Race      DogRace
-  Color     DogColor
-  mother    UUID
-  father    UUID
+	ID        UUID
+	Name      string
+	Brithdate *time.Time
+	Race      DogRace
+	Color     DogColor
+	Mother    UUID
+	Father    UUID
 }
