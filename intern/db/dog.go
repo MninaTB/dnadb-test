@@ -9,11 +9,11 @@ import (
 )
 
 const (
-	selectDog     = `SELECT id, name, birthdate, race, color, mother, father FROM dog`
+	selectDog     = `SELECT id, name, birthdate, race, mother, father FROM dog`
 	selectDogByID = selectDog + ` WHERE id = ?`
 	deleteDogByID = `DELETE FROM dog WHERE id = ?`
-	insertDog     = `INSERT INTO dog (id, name, birthdate, race, color, mother, father) 
-					 VALUES(?,?,?,?,?,?,?)`
+	insertDog     = `INSERT INTO dog (id, name, birthdate, race mother, father) 
+					 VALUES(?,?,?,?,?,?)`
 )
 
 // NewDogRepo - TODO
@@ -31,7 +31,7 @@ func (d *DogRepo) GetByID(id string) (*model.Dog, error) {
 	row := d.db.QueryRow(selectDogByID, id)
 	dog := &model.Dog{}
 	var birthdate mysql.NullTime
-	err := row.Scan(&dog.ID, &dog.Name, &birthdate, &dog.Race, &dog.Color, &dog.Mother, &dog.Father)
+	err := row.Scan(&dog.ID, &dog.Name, &birthdate, &dog.Race, &dog.Mother, &dog.Father)
 	if err != nil {
 		return nil, err
 	}
@@ -52,7 +52,7 @@ func (d *DogRepo) List() ([]*model.Dog, error) {
 	for rows.Next() {
 		dog := &model.Dog{}
 		var birthdate mysql.NullTime
-		err := rows.Scan(&dog.ID, &dog.Name, &birthdate, &dog.Race, &dog.Color, &dog.Mother, &dog.Father)
+		err := rows.Scan(&dog.ID, &dog.Name, &birthdate, &dog.Race, &dog.Mother, &dog.Father)
 		if err != nil {
 			return nil, err
 		}
@@ -66,7 +66,7 @@ func (d *DogRepo) List() ([]*model.Dog, error) {
 
 // Create - TODO
 func (d *DogRepo) Create(dog *model.Dog) error {
-	_, err := d.db.Exec(insertDog, dog.ID, dog.Name, dog.Brithdate, dog.Race, dog.Color, dog.Mother, dog.Father)
+	_, err := d.db.Exec(insertDog, dog.ID, dog.Name, dog.Brithdate, dog.Race, dog.Mother, dog.Father)
 	return err
 }
 
